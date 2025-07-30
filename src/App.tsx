@@ -15,8 +15,9 @@ const App = () => {
     async function fetchData() {
       const { data, error } = await supabase.from('properties').select('id, title, address, city');
       if (error) {
-        console.error('Error fetching properties:', error);
+        console.error('❌ Error fetching properties:', error);
       } else {
+        console.log('✅ Data received from Supabase:', data);
         setProperties(data);
       }
     }
@@ -27,6 +28,7 @@ const App = () => {
   return (
     <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
       <h1>Welcome to FIZZBO 🚀</h1>
+      <p>✅ The app is loading correctly!</p>
       <h2>Live Listings</h2>
       <ul style={{ listStyle: 'none', padding: 0 }}>
         {properties.map((prop) => (
